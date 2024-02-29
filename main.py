@@ -1,26 +1,27 @@
 import unittest
 from selenium import webdriver
 import page
+from locator import MainPageLocator
+import time
 
-class GoogleTest(unittest.TestCase):
+class website_test(unittest.TestCase):
 
     def setUp(self):
         self.driver = webdriver.Chrome()
-        self.driver.get('https://www.google.com/')
+        self.driver.get('https://www.formula1.com/')
         self.driver.implicitly_wait(1)
 
-    def test_google_1(self):
+    def test_formula1_title(self):                                                          #title test
         mainPage = page.MainPage(self.driver)
         assert mainPage.is_title_matches()
     
-    def test_google_2(self):
+    def test_formula1_Cookies(self):                                                        #Cookies test
         mainPage = page.MainPage(self.driver)
-        mainPage.click_TandC_button()
-        mainPage.Search_Text_Element = 'test'
-        mainPage.click_search_button()
-        self.driver.implicitly_wait(10)
-        search_result_page = page.SearchResultPage(self.driver)
-        assert search_result_page.is_result_found()
+        assert mainPage.Cookies()
+        
+        element = self.driver.find_element(*MainPageLocator.Cookies_manage_save_choices)
+        element.click()
+        time.sleep(2)
 
     def tearDown(self):
         self.driver.close()
