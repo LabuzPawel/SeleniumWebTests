@@ -22,40 +22,40 @@ class MainPage(BasePage):
         return title == 'F1 - The Official Home of Formula 1® Racing'
     
     def Cookies(self):
-        time.sleep(2)
-        cookie_iframe = self.driver.find_element(By.ID, "sp_message_iframe_1033523")
+        time.sleep(1)
+        cookie_iframe = self.driver.find_element(*MainPageLocator.Cookies_iframe)
         self.driver.switch_to.frame(cookie_iframe)
-        time.sleep(2)
+        time.sleep(1)
         
         element = self.driver.find_element(*MainPageLocator.Cookies_manage_button)
         element.click()
-        time.sleep(2)
+        time.sleep(1)
         self.driver.switch_to.default_content()
 
-        cookie_iframe2 = self.driver.find_element(By.ID, "sp_message_iframe_814265")
+        cookie_iframe2 = self.driver.find_element(*MainPageLocator.Cookies_iframe2)
         self.driver.switch_to.frame(cookie_iframe2)
         element = self.driver.find_element(*MainPageLocator.Cookies_manage_site_vendors)
         element.click()
-        time.sleep(2)
+        time.sleep(1)
 
         element = self.driver.find_element(*MainPageLocator.Cookies_manage_facebook)
         element.click()
-        time.sleep(2)
+        time.sleep(1)
 
         element = self.driver.find_element(*MainPageLocator.Cookies_manage_facebook_switch)
         element.click()
-        time.sleep(2)
+        time.sleep(1)
         return 'Consent Purposes' in self.driver.page_source
     
     def schedule(self):
-        time.sleep(2)
+        time.sleep(1)
         cookie_iframe = self.driver.find_element(By.ID, "sp_message_iframe_1033523")
         self.driver.switch_to.frame(cookie_iframe)
         time.sleep(1)
 
         element = self.driver.find_element(*MainPageLocator.Cookies_accept_button)
         element.click()
-        time.sleep(2)
+        time.sleep(1)
 
         actions = ActionChains(self.driver)
         element = self.driver.find_element(*MainPageLocator.schedule_frontpage)

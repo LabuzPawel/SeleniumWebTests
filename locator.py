@@ -9,6 +9,8 @@ class MainPageLocator(object):
     Cookies_manage_facebook_consent = (By.XPATH, '//*[@id="28602"]/p/div/div[2]/div/div[1]/h3')
     Cookies_manage_facebook_switch = (By.CSS_SELECTOR, 'body > div > div.message.type-modal > div.message-component.message-stacks.privacy-manager-tcfv2.no-children.p > div.pm-section > div > div:nth-child(4) > div.stack-row.custom > button.pm-switch')
     Cookies_manage_save_choices = (By.XPATH, "//button[@title='SAVE YOUR CHOICES']")
+    Cookies_iframe = (By.ID, "sp_message_iframe_1033523")
+    Cookies_iframe2 = (By.ID, "sp_message_iframe_814265")
 
     schedule_frontpage = (By.XPATH, "//*[@id='primaryNav']/div/div[2]/ul/li[4]")
     schedule_frontpage_full = (By.XPATH, '//*[@id="primaryNav"]/div/div[2]/ul/li[4]/div/div/div/div/div[1]/a[1]')

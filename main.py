@@ -1,34 +1,37 @@
 import unittest
 from selenium import webdriver
 import page
-from locator import MainPageLocator
-import time
+# from locator import MainPageLocator
+# import time
 
 class website_test(unittest.TestCase):
 
     def setUp(self):
+        options = webdriver.ChromeOptions()
+        options.add_experimental_option('excludeSwitches', ['enable-logging'])
         self.driver = webdriver.Chrome()
+        self.driver = webdriver.Chrome(options=options)
         self.driver.get('https://www.formula1.com/')
-        self.driver.implicitly_wait(1)
+        
+        
+    def tearDown(self):
+        self.driver.close()
 
     def test_formula1_title(self):                                                          #title test
         mainPage = page.MainPage(self.driver)
-        assert mainPage.is_title_matches()
+        self.assertTrue(mainPage.is_title_matches())
     
     def test_formula1_Cookies(self):                                                        #Cookies test
         mainPage = page.MainPage(self.driver)
-        assert mainPage.Cookies()
+        self.assertTrue(mainPage.Cookies())
         
-        element = self.driver.find_element(*MainPageLocator.Cookies_manage_save_choices)
-        element.click()
-        time.sleep(2)
+        # element = self.driver.find_element(*MainPageLocator.Cookies_manage_save_choices)
+        # element.click()
+        # time.sleep(2)
     
-    def test_formula1_schedule(self):                                                         #schedule check
+    def test_formula1_schedule(self):                                                       #schedule check
         mainPage = page.MainPage(self.driver)
-        assert mainPage.schedule()
-
-    def tearDown(self):
-        self.driver.close()
+        self.assertTrue(mainPage.schedule())
 
 if __name__ == '__main__':
     unittest.main()
