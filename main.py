@@ -22,6 +22,10 @@ class website_test(unittest.TestCase):
         element = self.driver.find_element(*MainPageLocator.Cookies_manage_save_choices)
         element.click()
         time.sleep(2)
+    
+    def test_formula1_schedule(self):                                                         #schedule check
+        mainPage = page.MainPage(self.driver)
+        assert mainPage.schedule()
 
     def tearDown(self):
         self.driver.close()
